@@ -1,25 +1,30 @@
 package edu.javacourse.studentorder.dao;
 
+
 import edu.javacourse.studentorder.domain.CountryArea;
 import edu.javacourse.studentorder.domain.PassportOffice;
 import edu.javacourse.studentorder.domain.RegisterOffice;
 import edu.javacourse.studentorder.domain.Street;
 import edu.javacourse.studentorder.exception.DaoException;
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 
-public class DictionaryDaoImplTest {
 
+public class DictionaryDaoImplTest
+{
     private static final Logger logger = LoggerFactory.getLogger(DictionaryDaoImplTest.class);
 
     @BeforeClass
     public static void startUp() throws Exception {
-        DbInit.startUp();
+        DBInit.startUp();
     }
 
     @Test
@@ -27,6 +32,7 @@ public class DictionaryDaoImplTest {
         LocalDateTime dt1 = LocalDateTime.now();
         LocalDateTime dt2 = LocalDateTime.now();
         logger.info("TEST {} {}", dt1, dt2);
+
         List<Street> d = new DictionaryDaoImpl().findStreets("про");
         Assert.assertTrue(d.size() == 2);
     }
@@ -53,6 +59,5 @@ public class DictionaryDaoImplTest {
         Assert.assertTrue(ca3.size() == 2);
         List<CountryArea> ca4 = new DictionaryDaoImpl().findAreas("020010010000");
         Assert.assertTrue(ca4.size() == 2);
-
     }
 }
